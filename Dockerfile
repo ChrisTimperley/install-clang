@@ -1,4 +1,3 @@
-
 FROM        ubuntu:trusty
 MAINTAINER  Robin Sommer <robin@icir.org>
 
@@ -9,13 +8,11 @@ ENV PATH /opt/llvm/bin:$PATH
 CMD bash
 
 # Setup packages.
-RUN apt-get update && apt-get -y install cmake git build-essential vim python
+RUN apt-get update && apt-get -y install cmake git build-essential python
 
 # Copy install-clang over.
 ADD . /opt/install-clang
 
 # Compile and install LLVM/clang. We delete the source directory to
 # avoid committing it to the image.
-RUN /opt/install-clang/install-clang -j 4 -C /opt/llvm
-
-
+RUN /opt/install-clang/install-clang -j $(nproc) -C /opt/llvm
