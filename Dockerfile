@@ -15,4 +15,5 @@ ADD . /opt/install-clang
 
 # Compile and install LLVM/clang. We delete the source directory to
 # avoid committing it to the image.
-RUN /opt/install-clang/install-clang -j $(nproc) -C /opt/llvm
+# CT: build from master, not 3.5 release
+RUN /opt/install-clang/install-clang -m -j $(nproc) -C /opt/llvm

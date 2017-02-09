@@ -1,5 +1,4 @@
-
-IMAGE="rsmmr/clang:3.5"
+IMAGE="christimperley/clang:latest"
 
 all:
 
